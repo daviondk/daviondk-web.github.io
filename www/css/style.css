@@ -1,0 +1,23 @@
+div, nav {
+    border: 1px dotted grey;
+}
+.flex-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.top-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.down-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.center {
+    margin: auto;
+}
