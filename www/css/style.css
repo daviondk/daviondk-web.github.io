@@ -1,8 +1,17 @@
+* {
+    font-family: 'Times New Roman', serif;
+}
+
 div{
     border: 1px dotted grey;
 }
 
-.header-grid-container{
+.weather-degrees {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.header-grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
@@ -14,10 +23,11 @@ div{
     background-color: #a8b1b3;
     color: white;
     font-size: 0.8em;
-    margin: 2%;
+    margin: 10px 30px 10px 30px;
 }
 
-li {
+ul {
+    padding: 0;
     list-style-type: none;
 }
 
@@ -26,9 +36,10 @@ li {
     flex-basis: 500px;
 }
 
-.weather-favourite {
+.weather-main {
     flex-grow: 1;
-    flex-basis: 500px;
+    flex-basis: 440px;
+    padding: 10px 30px 10px 30px;
 }
 
 .weather-info {
@@ -51,4 +62,24 @@ li {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.weather-city-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 10px 30px 10px 30px;
+}
+
+.weather-there {
+    padding: 0 30px 0 30px;
+}
+
+.update-button {
+    text-align: center;
+}
+
+.weather-favourite {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px 10px 30px;
 }
