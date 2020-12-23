@@ -1,9 +1,44 @@
-div, nav {
+div{
     border: 1px dotted grey;
 }
-.flex-container{
+
+.header-grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+}
+
+.weather-list-field {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    background-color: #a8b1b3;
+    color: white;
+    font-size: 0.8em;
+    margin: 2%;
+}
+
+li {
+    list-style-type: none;
+}
+
+.weather-city {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.weather-favourite {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.weather-info {
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+
+.weather-list-field {
+    flex-grow: 1;
+    flex-basis: 0;
 }
 
 .top-flex-container {
@@ -15,9 +50,5 @@ div, nav {
 .down-flex-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.center {
-    margin: auto;
+    justify-content: space-between;
 }

@@ -8,91 +8,235 @@
 <body>
 
 <header>
-    <div class="flex-container">
-    <div><h1>Погода здесь</h1></div>
-        <div><form>
-            <button>Обновить геолокацию</button>
-        </form></div>
+    <div class="header-grid-container">
+        <div class="weather-there"><h1>Погода здесь</h1></div>
+        <div class="update-button">
+            <form>
+                <button class="update-geopoz" type="button" name="update"> Обновить геолокацию</button>
+            </form>
+        </div>
     </div>
 </header>
 
-
-        <div class="top-flex-container">
-            <div><h2>Saint Petersburg</h2>
+<main>
+    <div class="top-flex-container">
+        <div class="weather-favourite">
+            <h2>Saint Petersburg</h2>
             <h2>Избранное</h2>
-                <p>Иконка, градусы</p></div>
-            <div><p>
-                <ul>
-                    <li>Ветер Moderate breeze, 6.0 m/s, North-northwest</li>
-                <li>Облачность <span style='padding-left:145px;'>Broken clouds</span></li>
-                    <li>Давление 1013 hpa</li>
-                    <li>Влажность 52 %</li>
-                    <li>Координаты [59.88, 30.42]</li>
-                </ul>
-                </p></div>
-        </div>
-        <div>
-            <div class="down-flex-container">
-                <div><p>Moscow</p>
-                    <ul>
-                        <li>Ветер Moderate breeze, 6.0 m/s, North-northwest</li>
-                        <li>Облачность Broken clouds</li>
-                        <li>Давление 1013 hpa</li>
-                        <li>Влажность 52 %</li>
-                        <li>Координаты [59.88, 30.42]</li>
-                    </ul>
-
-                    <p>Moscow</p>
-                    <ul>
-                        <li>Ветер Moderate breeze, 6.0 m/s, North-northwest</li>
-                        <li>Облачность Broken clouds</li>
-                        <li>Давление 1013 hpa</li>
-                        <li>Влажность 52 %</li>
-                        <li>Координаты [59.88, 30.42]</li>
-                    </ul>
-
-                    <p>Moscow</p>
-                    <ul>
-                        <li>Ветер Moderate breeze, 6.0 m/s, North-northwest</li>
-                        <li>Облачность Broken clouds</li>
-                        <li>Давление 1013 hpa</li>
-                        <li>Влажность 52 %</li>
-                        <li>Координаты [59.88, 30.42]</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <div><p>Helsinki</p>
-                        <ul>
-                            <li>Ветер Moderate breeze, 6.0 m/s, North-northwest</li>
-                            <li>Облачность Broken clouds</li>
-                            <li>Давление 1013 hpa</li>
-                            <li>Влажность 52 %</li>
-                            <li>Координаты [59.88, 30.42]</li>
-                        </ul>
-
-                        <p>Helsinki</p>
-                        <ul>
-                            <li>Ветер Moderate breeze, 6.0 m/s, North-northwest</li>
-                            <li>Облачность Broken clouds</li>
-                            <li>Давление 1013 hpa</li>
-                            <li>Влажность 52 %</li>
-                            <li>Координаты [59.88, 30.42]</li>
-                        </ul>
-
-                        <p>Helsinki</p>
-                        <ul>
-                            <li>Ветер Moderate breeze, 6.0 m/s, North-northwest</li>
-                            <li>Облачность Broken clouds</li>
-                            <li>Давление 1013 hpa</li>
-                            <li>Влажность 52 %</li>
-                            <li>Координаты [59.88, 30.42]</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="weather-degrees">
+                <img src="images/weather.png" width="100" height="100" class="weather-img" alt="weather"/>
+                <p class="weather-degrees-now">8&deg;C</p>
             </div>
         </div>
+        <div class="weather-info">
+            <ul>
 
+                <li class="weather-list-field">
+                    <p>Ветер</p>
+                    <p>Moderate breeze, 6.0 m/s, North-northwest</p>
+                </li>
+
+                <li class="weather-list-field">
+                    <p>Облачность</p>
+                    <p>Broken clouds</p>
+                </li>
+
+                <li class="weather-list-field">
+                    <p>Давление</p>
+                    <p>1013 hpa</p>
+                </li>
+
+                <li class="weather-list-field">
+                    <p>Влажность</p>
+                    <p>52 %</p>
+                </li>
+
+                <li class="weather-list-field">
+                    <p>Координаты</p>
+                    <p>[59.88, 30.42]</p>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div>
+        <div class="down-flex-container">
+            <div class="weather-city">
+                <p>Moscow</p>
+                <ul>
+                    <li class="weather-list-field">
+                        <p>Ветер</p>
+                        <p>Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Облачность</p>
+                        <p>Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Давление</p>
+                        <p>1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Влажность</p>
+                        <p>52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Координаты</p>
+                        <p>[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <p>Moscow</p>
+                <ul>
+                    <li class="weather-list-field">
+                        <p>Ветер</p>
+                        <p>Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Облачность</p>
+                        <p>Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Давление</p>
+                        <p>1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Влажность</p>
+                        <p>52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Координаты</p>
+                        <p>[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <p>Moscow</p>
+                <ul>
+                    <li class="weather-list-field">
+                        <p>Ветер</p>
+                        <p>Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Облачность</p>
+                        <p>Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Давление</p>
+                        <p>1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Влажность</p>
+                        <p>52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Координаты</p>
+                        <p>[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <p>Helsinki</p>
+                <ul>
+                    <li class="weather-list-field">
+                        <p>Ветер</p>
+                        <p>Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Облачность</p>
+                        <p>Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Давление</p>
+                        <p>1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Влажность</p>
+                        <p>52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Координаты</p>
+                        <p>[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <p>Helsinki</p>
+                <ul>
+                    <li class="weather-list-field">
+                        <p>Ветер</p>
+                        <p>Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Облачность</p>
+                        <p>Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Давление</p>
+                        <p>1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Влажность</p>
+                        <p>52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Координаты</p>
+                        <p>[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <p>Helsinki</p>
+                <ul>
+                    <li class="weather-list-field">
+                        <p>Ветер</p>
+                        <p>Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Облачность</p>
+                        <p>Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Давление</p>
+                        <p>1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Влажность</p>
+                        <p>52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p>Координаты</p>
+                        <p>[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </main>
 
 </body>
