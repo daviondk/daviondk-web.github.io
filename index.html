@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="header-grid-container">
+        <div class="weather-there"><h1>Погода здесь</h1></div>
+        <div class="update-button">
+            <img src="images/update.png" width="100" height="100" class="weather-update-img" alt="weather-update"/>
+            <form>
+                <button class="update-geo" type="button" name="update"> Обновить геолокацию</button>
+            </form>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="top-flex-container">
+        <div class="weather-main">
+            <h2 class="main-text">Saint Petersburg</h2>
+            <div class="weather-degrees">
+                <img src="images/weather.png" width="180" height="180" class="weather-img" alt="weather"/>
+                <p class="weather-degrees-now">8&deg;C</p>
+            </div>
+        </div>
+        <div class="weather-info">
+            <ul>
+                <li class="weather-list-field">
+                    <p class="weather-field-feature-name">Ветер</p>
+                    <p class="weather-field-feature-value">Moderate breeze, 6.0 m/s, North-northwest</p>
+                </li>
+
+                <li class="weather-list-field">
+                    <p class="weather-field-feature-name">Облачность</p>
+                    <p class="weather-field-feature-value"> Broken clouds</p>
+                </li>
+
+                <li class="weather-list-field">
+                    <p class="weather-field-feature-name">Давление</p>
+                    <p class="weather-field-feature-value">1013 hpa</p>
+                </li>
+
+                <li class="weather-list-field">
+                    <p class="weather-field-feature-name">Влажность</p>
+                    <p class="weather-field-feature-value">52 %</p>
+                </li>
+
+                <li class="weather-list-field">
+                    <p class="weather-field-feature-name">Координаты</p>
+                    <p class="weather-field-feature-value">[59.88, 30.42]</p>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="weather-favourite">
+        <h2 class="weather-favourite-text">Избранное</h2>
+        <div class="add-city">
+            <input type="text" class="input-city" placeholder="Добавить новый город">
+            <button class="add-city-button" type="button" name="add">+</button>
+        </div>
+    </div>
+    <div>
+        <div class="down-flex-container">
+            <div class="weather-city">
+                <div class="weather-city-header">
+                    <span class="weather-city-name"><h3>Moscow</h3></span>
+                    <span class="weather-city-temp">5&deg;C</span>
+                    <img src="images/weather.png" width="100" height="100" class="weather-city-img" alt="weather-city"/>
+                    <span class="delete-city-button">×</span>
+                </div>
+                <ul>
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Ветер</p>
+                        <p class="weather-field-feature-value">Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Облачность</p>
+                        <p class="weather-field-feature-value"> Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Давление</p>
+                        <p class="weather-field-feature-value">1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Влажность</p>
+                        <p class="weather-field-feature-value">52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Координаты</p>
+                        <p class="weather-field-feature-value">[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <div class="weather-city-header">
+                    <span class="weather-city-name"><h3>Helsinki</h3></span>
+                    <span class="weather-city-temp">5&deg;C</span>
+                    <img src="images/weather.png" width="100" height="100" class="weather-city-img" alt="weather-city"/>
+                    <span class="delete-city-button">×</span>
+                </div>
+                <ul>
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Ветер</p>
+                        <p class="weather-field-feature-value">Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Облачность</p>
+                        <p class="weather-field-feature-value"> Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Давление</p>
+                        <p class="weather-field-feature-value">1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Влажность</p>
+                        <p class="weather-field-feature-value">52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Координаты</p>
+                        <p class="weather-field-feature-value">[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <div class="weather-city-header">
+                    <span class="weather-city-name"><h3>Moscow</h3></span>
+                    <span class="weather-city-temp">5&deg;C</span>
+                    <img src="images/weather.png" width="100" height="100" class="weather-city-img" alt="weather-city"/>
+                    <span class="delete-city-button">×</span>
+                </div>
+                <ul>
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Ветер</p>
+                        <p class="weather-field-feature-value">Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Облачность</p>
+                        <p class="weather-field-feature-value"> Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Давление</p>
+                        <p class="weather-field-feature-value">1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Влажность</p>
+                        <p class="weather-field-feature-value">52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Координаты</p>
+                        <p class="weather-field-feature-value">[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <div class="weather-city-header">
+                    <span class="weather-city-name"><h3>Helsinki</h3></span>
+                    <span class="weather-city-temp">5&deg;C</span>
+                    <img src="images/weather.png" width="100" height="100" class="weather-city-img" alt="weather-city"/>
+                    <span class="delete-city-button">×</span>
+                </div>
+                <ul>
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Ветер</p>
+                        <p class="weather-field-feature-value">Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Облачность</p>
+                        <p class="weather-field-feature-value"> Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Давление</p>
+                        <p class="weather-field-feature-value">1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Влажность</p>
+                        <p class="weather-field-feature-value">52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Координаты</p>
+                        <p class="weather-field-feature-value">[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <div class="weather-city-header">
+                    <span class="weather-city-name"><h3>Moscow</h3></span>
+                    <span class="weather-city-temp">5&deg;C</span>
+                    <img src="images/weather.png" width="100" height="100" class="weather-city-img" alt="weather-city"/>
+                    <span class="delete-city-button">×</span>
+                </div>
+                <ul>
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Ветер</p>
+                        <p class="weather-field-feature-value">Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Облачность</p>
+                        <p class="weather-field-feature-value"> Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Давление</p>
+                        <p class="weather-field-feature-value">1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Влажность</p>
+                        <p class="weather-field-feature-value">52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Координаты</p>
+                        <p class="weather-field-feature-value">[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-city">
+                <div class="weather-city-header">
+                    <span class="weather-city-name"><h3>Helsinki</h3></span>
+                    <span class="weather-city-temp">5&deg;C</span>
+                    <img src="images/weather.png" width="100" height="100" class="weather-city-img" alt="weather-city"/>
+                    <span class="delete-city-button">×</span>
+                </div>
+                <ul>
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Ветер</p>
+                        <p class="weather-field-feature-value">Moderate breeze, 6.0 m/s, North-northwest</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Облачность</p>
+                        <p class="weather-field-feature-value"> Broken clouds</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Давление</p>
+                        <p class="weather-field-feature-value">1013 hpa</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Влажность</p>
+                        <p class="weather-field-feature-value">52 %</p>
+                    </li>
+
+                    <li class="weather-list-field">
+                        <p class="weather-field-feature-name">Координаты</p>
+                        <p class="weather-field-feature-value">[59.88, 30.42]</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
