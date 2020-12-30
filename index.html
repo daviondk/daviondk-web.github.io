@@ -10,7 +10,7 @@
 <header>
     <div class="header-grid-container">
         <div class="weather-there"><h1>Погода здесь</h1></div>
-        <div class="update-button">
+        <div class="update-button" id="updateLocation">
             <img src="images/update.png" width="100" height="100" class="weather-update-img" alt="weather-update"/>
             <form>
                 <button class="update-geo" type="button" name="update"> Обновить геолокацию</button>
@@ -20,7 +20,7 @@
 </header>
 
 <main>
-    <div class="top-flex-container">
+    <div class="top-flex-container" id="weatherTop">
         <div class="weather-main">
             <h2 class="main-text">Saint Petersburg</h2>
             <div class="weather-degrees">
@@ -62,12 +62,12 @@
     <div class="weather-favourite">
         <h2 class="weather-favourite-text">Избранное</h2>
         <div class="add-city">
-            <input type="text" class="input-city" placeholder="Добавить новый город">
-            <button class="add-city-button" type="button" name="add">+</button>
+            <input type="text" class="input-city" placeholder="Добавить новый город" id="addCityInput">
+            <button class="add-city-button" type="button" name="add" id="addCity">+</button>
         </div>
     </div>
     <div>
-        <div class="down-flex-container">
+        <div class="down-flex-container" id="weatherContainer">
             <div class="weather-city">
                 <div class="weather-city-header">
                     <span class="weather-city-name"><h3>Moscow</h3></span>
@@ -275,6 +275,6 @@
         </div>
     </div>
 </main>
-
+<script src="js/weather.js"></script>
 </body>
 </html>
