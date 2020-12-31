@@ -205,7 +205,7 @@ function addCityHtml(id) {
     clone.removeAttribute("hidden");
     clone.setAttribute('id', id);
 
-    let listNode = setHtmlFieldsBottom(loadingText, loadingText, loadingText, clone);
+    let listNode = setHtmlFieldsBottom(updateIcon, loadingText, loadingText, clone);
     setWeatherListFieldsHtml(listNode, loadingText, loadingText, loadingText, loadingText, loadingText);
 
     weatherContainer.appendChild(clone);
