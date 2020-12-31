@@ -5,6 +5,8 @@ const addCityInput = document.getElementById("addCityInput");
 const weatherTop = document.getElementById("weatherTop");
 const weatherContainer = document.getElementById("weatherContainer");
 
+const weatherCityTemplate = document.getElementById("weather-city-template");
+
 const apiKey = "7fc666f8ef3f379a8fbd995000ef703d";
 
 const getWeatherByCityEndpoint =
@@ -21,15 +23,12 @@ updateLocationButton.addEventListener('click', (event) => {
     event.preventDefault(); // ?
 })
 
-addCityButton.addEventListener('submit', (event) => {
-    // addCity(event);
+addCityButton.addEventListener('click', (event) => {
+    addCity();
     event.preventDefault();
 })
 
 let locationCache = null;
-
-let locationLat = null;
-let locationLong = null;
 
 const defaultLocation = 'Saint Petersburg';
 
@@ -69,17 +68,11 @@ function updateLocation(location) {
         weatherInfo = requestObject(getWeatherByCoordsEndpoint(location.latitude, location.longitude))
     }
     if (weatherInfo != null) {
-        weatherInfo.then(result => changeWeather(result));
+        weatherInfo.then(result => changeWeather(result, setHtmlFieldsTop));
     }
 }
 
-function changeWeather(weatherInfo) {
-    console.log(weatherInfo);
-    const iconName = getByXPath(weatherInfo, "/current/weather/@icon");
-    const cityName = getByXPath(weatherInfo, "/current/city/@name");
-
-    const temperature = `${getByXPath(weatherInfo, "/current/temperature/@value")}°C`;
-
+function setHtmlFieldsTop(iconName, cityName, temperature) {
     const weatherMain = weatherTop.querySelector(".weather-main");
     const weatherDegrees = weatherMain.querySelector(".weather-degrees");
 
@@ -88,8 +81,16 @@ function changeWeather(weatherInfo) {
 
     weatherMain.querySelector(".main-text").innerHTML = cityName;
 
-    const weatherInfoHtml = weatherTop.querySelector(".weather-info");
-    updateWeatherInfoHtml(weatherInfoHtml, weatherInfo);
+    return weatherTop.querySelector(".weather-info");
+}
+
+function changeWeather(weatherInfo, setHtmlFields) {
+    const iconName = getByXPath(weatherInfo, "/current/weather/@icon");
+    const cityName = getByXPath(weatherInfo, "/current/city/@name");
+
+    const temperature = `${getByXPath(weatherInfo, "/current/temperature/@value")}°C`;
+
+    updateWeatherInfoHtml(setHtmlFields(iconName, cityName, temperature), weatherInfo);
 }
 
 function updateWeatherInfoHtml(weatherInfoHtml, weatherInfo) {
@@ -136,11 +137,57 @@ function getByXPath(document, path) {
 }
 
 function requestObject(endpoint) {
+    console.log(`receiving object from ${endpoint}`);
     return fetch(endpoint)
-        .then( response => response.text())
+        .then( response => {
+            if (response.ok) {
+                return response.text()
+            } else {
+                throw new Error("Can't get object");
+            }
+        })
         .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
         .catch(() => {
             console.error(`Can't connect to endpoint ${endpoint}`);
             return null;
         })
+}
+
+function addCity() {
+    console.log("adding city");
+    let inputCity = addCityInput.value;
+    if (localStorage.getItem(inputCity) == null) {
+        let id = localStorage.length.toString();
+        requestObject(getWeatherByCityEndpoint(inputCity))
+            .then(response => {
+                if (response != null) {
+                    addCityHtml(response, id);
+                    localStorage.setItem(inputCity, id);
+                } else {
+                    console.error(`Can't get data for city ${inputCity}`);
+                }
+            }).catch((e) => console.error(e + "Can't add city"));
+    } else {
+        console.error(`City ${inputCity} already exists`);
+    }
+
+}
+
+function setHtmlFieldsBottom(iconName, cityName, temperature, node) {
+    const weatherMain = node.querySelector(".weather-city-header");
+
+    weatherMain.querySelector(".weather-city-img").src = getIconEndpoint(iconName);
+    weatherMain.querySelector(".weather-city-temp").innerHTML = temperature;
+    weatherMain.querySelector(".weather-city-name").innerHTML = cityName;
+
+    return node;
+}
+
+function addCityHtml(response, id) {
+    let clone = weatherCityTemplate.cloneNode(true);
+    clone.removeAttribute("hidden");
+    clone.setAttribute('id', id);
+    changeWeather(response, (i, c, t) => setHtmlFieldsBottom(i, c, t, clone))
+    weatherContainer.appendChild(clone);
+    console.log("city added");
 }
