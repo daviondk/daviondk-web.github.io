@@ -157,12 +157,12 @@ function addCity() {
     console.log("adding city");
     let inputCity = addCityInput.value;
     if (localStorage.getItem(inputCity) == null) {
-        let id = localStorage.length.toString();
+        let id = inputCity + "_id"; // for correct deletion
         requestObject(getWeatherByCityEndpoint(inputCity))
             .then(response => {
                 if (response != null) {
                     addCityHtml(response, id);
-                    localStorage.setItem(inputCity, id);
+                    localStorage.setItem(id, inputCity);
                 } else {
                     console.error(`Can't get data for city ${inputCity}`);
                 }
@@ -190,4 +190,14 @@ function addCityHtml(response, id) {
     changeWeather(response, (i, c, t) => setHtmlFieldsBottom(i, c, t, clone))
     weatherContainer.appendChild(clone);
     console.log("city added");
+}
+
+function deleteCity(element) {
+    let cityNode = element.parentNode.parentNode;
+    let cityId = cityNode.id;
+    console.log("deleting city with id " + cityId)
+    if (localStorage.getItem(cityId) != null) {
+        localStorage.removeItem(cityId);
+        weatherContainer.removeChild(cityNode);
+    }
 }
