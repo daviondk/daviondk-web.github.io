@@ -24,7 +24,7 @@ updateLocationButton.addEventListener('click', (event) => {
 })
 
 addCityButton.addEventListener('click', (event) => {
-    addCity();
+    addCityFromInput();
     event.preventDefault();
 })
 
@@ -33,9 +33,12 @@ let locationCache = null;
 const defaultLocation = 'Saint Petersburg';
 
 function getLocation() {
+    let listNode = setHtmlFieldsTop(updateIcon, loadingText, loadingText);
+    setWeatherListFieldsHtml(listNode, loadingText, loadingText, loadingText, loadingText, loadingText);
     let currentLocation = navigator.geolocation;
     if (locationCache != null) {
         console.log("Using cached location")
+        updateLocation(locationCache);
     } else if (currentLocation) {
         currentLocation.getCurrentPosition(
             (p) => {
@@ -60,6 +63,8 @@ function setLocation(location) {
     locationCache = location;
 }
 
+const loadingText = "Loading...";
+
 function updateLocation(location) {
     let weatherInfo;
     if (typeof location === 'string' || location instanceof String) {
@@ -76,7 +81,7 @@ function setHtmlFieldsTop(iconName, cityName, temperature) {
     const weatherMain = weatherTop.querySelector(".weather-main");
     const weatherDegrees = weatherMain.querySelector(".weather-degrees");
 
-    weatherDegrees.querySelector(".weather-img").src = getIconEndpoint(iconName);
+    weatherDegrees.querySelector(".weather-img").src = iconName === updateIcon ? updateIcon : getIconEndpoint(iconName);
     weatherDegrees.querySelector(".weather-degrees-now").innerHTML = temperature;
 
     weatherMain.querySelector(".main-text").innerHTML = cityName;
@@ -107,6 +112,10 @@ function updateWeatherInfoHtml(weatherInfoHtml, weatherInfo) {
 
     const windDesc = `${windName}, ${windSpeed}, ${windDirection}`;
 
+    setWeatherListFieldsHtml(weatherInfoHtml, windDesc, clouds, pressure, humidity, coords);
+}
+
+function setWeatherListFieldsHtml(weatherInfoHtml, windDesc, clouds, pressure, humidity, coords) {
     const weatherList = weatherInfoHtml.querySelector("ul").children;
 
     for (let i = 0, child; child = weatherList[i]; i++) {
@@ -153,51 +162,75 @@ function requestObject(endpoint) {
         })
 }
 
-function addCity() {
-    console.log("adding city");
-    let inputCity = addCityInput.value;
-    if (localStorage.getItem(inputCity) == null) {
-        let id = inputCity + "_id"; // for correct deletion
-        requestObject(getWeatherByCityEndpoint(inputCity))
+const updateIcon = "images/update.png";
+
+function addCityByName(name, reset = false) {
+    let id = name + "_id"; // for correct deletion
+    if (localStorage.getItem(id) == null || reset) {
+        let cityNode = addCityHtml(id);
+        setHtmlFieldsBottom(updateIcon, loadingText, loadingText, cityNode);
+        setWeatherListFieldsHtml(cityNode, loadingText, loadingText, loadingText, loadingText, loadingText);
+        localStorage.setItem(id, name);
+        requestObject(getWeatherByCityEndpoint(name))
             .then(response => {
                 if (response != null) {
-                    addCityHtml(response, id);
-                    localStorage.setItem(id, inputCity);
+                    changeWeather(response, (i, c, t) => setHtmlFieldsBottom(i, c, t, cityNode))
                 } else {
-                    console.error(`Can't get data for city ${inputCity}`);
+                    deleteCity(cityNode);
+                    console.error(`Can't get data for city ${name}`);
                 }
             }).catch((e) => console.error(e + "Can't add city"));
     } else {
-        console.error(`City ${inputCity} already exists`);
+        console.error(`City ${name} already exists`);
     }
+}
 
+function addCityFromInput() {
+    console.log("adding city");
+    let inputCity = addCityInput.value;
+    addCityByName(inputCity);
 }
 
 function setHtmlFieldsBottom(iconName, cityName, temperature, node) {
     const weatherMain = node.querySelector(".weather-city-header");
 
-    weatherMain.querySelector(".weather-city-img").src = getIconEndpoint(iconName);
+    weatherMain.querySelector(".weather-city-img").src = updateIcon === iconName ? updateIcon : getIconEndpoint(iconName);
     weatherMain.querySelector(".weather-city-temp").innerHTML = temperature;
     weatherMain.querySelector(".weather-city-name").innerHTML = cityName;
 
     return node;
 }
 
-function addCityHtml(response, id) {
+function addCityHtml(id) {
     let clone = weatherCityTemplate.cloneNode(true);
     clone.removeAttribute("hidden");
     clone.setAttribute('id', id);
-    changeWeather(response, (i, c, t) => setHtmlFieldsBottom(i, c, t, clone))
+
+    let listNode = setHtmlFieldsBottom(loadingText, loadingText, loadingText, clone);
+    setWeatherListFieldsHtml(listNode, loadingText, loadingText, loadingText, loadingText, loadingText);
+
     weatherContainer.appendChild(clone);
     console.log("city added");
+    return clone;
 }
 
-function deleteCity(element) {
+function deleteCityFromChild(element) {
     let cityNode = element.parentNode.parentNode;
+    deleteCity(cityNode);
+}
+
+function deleteCity(cityNode) {
     let cityId = cityNode.id;
     console.log("deleting city with id " + cityId)
     if (localStorage.getItem(cityId) != null) {
         localStorage.removeItem(cityId);
         weatherContainer.removeChild(cityNode);
     }
+}
+
+getLocation();
+
+let favourite = Object.keys(localStorage);
+for (let i = 0, id;  id = favourite[i]; i++) {
+    addCityByName(localStorage.getItem(id), true);
 }
