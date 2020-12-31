@@ -42,7 +42,6 @@ function getLocation() {
     } else if (currentLocation) {
         currentLocation.getCurrentPosition(
             (p) => {
-                console.log(p.coords == null);
                 setLocation(p.coords);
                 console.log("Location is loaded");
                 updateLocation(locationCache);
